@@ -406,5 +406,3 @@ func runDowntime(cmds []string) {
 
 	}
 }
-
-//  fmt.Println(reflect.TypeOf(session))
