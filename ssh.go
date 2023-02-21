@@ -1,5 +1,7 @@
 package main
 
+// created by manish choudhary to automate task
+
 import (
 	"bufio"
 	"encoding/base64"
@@ -25,11 +27,11 @@ const (
 	timeout = 10 * time.Second
 	server1 = "192.168.1.31"
 	server2 = "192.168.1.31"
-	clapi   = "/usr/share/centreon/www/modules/centreon-clapi/core/centreon"
+	clapi   = "path"
 	user1   = "nagiosadmin"
 	user2   = "root"
-	pass1   = "bmFnaW9zYWRtaW4=" // nagiosadmin
-	pass2   = "bWFuaXNoQDEyMzQ1" //manish@12345
+	pass1   = "bmFnaW9zYWRtaW4="
+	pass2   = "bWFuaXNoQDEyMzQ1"
 )
 
 type MyStruct struct {
