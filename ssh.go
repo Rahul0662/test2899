@@ -28,8 +28,8 @@ const (
 	clapi   = "/usr/share/centreon/www/modules/centreon-clapi/core/centreon"
 	user1   = "nagiosadmin"
 	user2   = "root"
-	pass1   = "bmFnaW9zYWRtaW4="
-	pass2   = "bWFuaXNoQDEyMzQ1"
+	pass1   = "bmFnaW9zYWRtaW4=" // nagiosadmin
+	pass2   = "bWFuaXNoQDEyMzQ1" //manish@12345
 )
 
 type MyStruct struct {
@@ -358,8 +358,8 @@ func checkMaintenance() {
 func getHostcmd(k string) []string {
 	commandFile := "/var/log/nagios/rw/nagios.cmd"
 	var cmdlist []string
-	ScheduleHostDowntime := fmt.Sprintf(" echo \" [%d] SCHEDULE_HOST_DOWNTIME;%s;%d;%d;1;0;7200;%s;%s \" >> %s", globalMyStruct.currentUnixTime, k, globalMyStruct.startUnixTime, globalMyStruct.endUnixTime, "nagiosadmin", globalMyStruct.comments, commandFile)
-	ScheduleHostSvcDowntime := fmt.Sprintf(" echo \" [%d] SCHEDULE_HOST_SVC_DOWNTIME;%s;%d;%d;1;0;7200;%s;%s \" >> %s", globalMyStruct.currentUnixTime, k, globalMyStruct.startUnixTime, globalMyStruct.endUnixTime, "nagiosadmin", globalMyStruct.comments, commandFile)
+	ScheduleHostDowntime := fmt.Sprintf(" echo \" [%d] SCHEDULE_HOST_DOWNTIME;%s;%d;%d;1;0;7200;%s;%s \" >> %s", globalMyStruct.currentUnixTime, k, globalMyStruct.startUnixTime, globalMyStruct.endUnixTime, user1, globalMyStruct.comments, commandFile)
+	ScheduleHostSvcDowntime := fmt.Sprintf(" echo \" [%d] SCHEDULE_HOST_SVC_DOWNTIME;%s;%d;%d;1;0;7200;%s;%s \" >> %s", globalMyStruct.currentUnixTime, k, globalMyStruct.startUnixTime, globalMyStruct.endUnixTime, user1, globalMyStruct.comments, commandFile)
 	cmdlist = append(cmdlist, ScheduleHostDowntime)
 	cmdlist = append(cmdlist, ScheduleHostSvcDowntime)
 	return cmdlist
@@ -369,8 +369,8 @@ func getHostcmd(k string) []string {
 func getHGcmd(k string) []string {
 	var cmdlist []string
 	commandFile := "/var/log/nagios/rw/nagios.cmd"
-	ScheduleHostgroupHostDowntime := fmt.Sprintf(" echo \" [%d] SCHEDULE_HOSTGROUP_HOST_DOWNTIME;%s;%d;%d;1;0;7200;%s;%s \" >> %s", globalMyStruct.currentUnixTime, k, globalMyStruct.startUnixTime, globalMyStruct.endUnixTime, "nagiosadmin", globalMyStruct.comments, commandFile)
-	ScheduleHostgroupSvcDowntime := fmt.Sprintf(" echo \" [%d] SCHEDULE_HOSTGROUP_SVC_DOWNTIME;%s;%d;%d;1;0;7200;%s;%s \" >> %s", globalMyStruct.currentUnixTime, k, globalMyStruct.startUnixTime, globalMyStruct.endUnixTime, "nagiosadmin", globalMyStruct.comments, commandFile)
+	ScheduleHostgroupHostDowntime := fmt.Sprintf(" echo \" [%d] SCHEDULE_HOSTGROUP_HOST_DOWNTIME;%s;%d;%d;1;0;7200;%s;%s \" >> %s", globalMyStruct.currentUnixTime, k, globalMyStruct.startUnixTime, globalMyStruct.endUnixTime, user1, globalMyStruct.comments, commandFile)
+	ScheduleHostgroupSvcDowntime := fmt.Sprintf(" echo \" [%d] SCHEDULE_HOSTGROUP_SVC_DOWNTIME;%s;%d;%d;1;0;7200;%s;%s \" >> %s", globalMyStruct.currentUnixTime, k, globalMyStruct.startUnixTime, globalMyStruct.endUnixTime, user1, globalMyStruct.comments, commandFile)
 	cmdlist = append(cmdlist, ScheduleHostgroupHostDowntime)
 	cmdlist = append(cmdlist, ScheduleHostgroupSvcDowntime)
 	return cmdlist
@@ -404,3 +404,5 @@ func runDowntime(cmds []string) {
 
 	}
 }
+
+//  fmt.Println(reflect.TypeOf(session))
